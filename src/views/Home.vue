@@ -111,8 +111,13 @@ export default {
     downloadCsv() {
       if (this.transmutedData.length > 0) {
         const Json2csvParser = new Parser()
-        const uriEnconded = encodeURI(Json2csvParser.parse(this.transmutedData))
-        window.open('data:text/csv;charset=UTF-8, '+ uriEnconded)
+
+        let link = document.createElement('a')
+        link.setAttribute('href', 'data:text/csv; charset=utf-8, '
+          + encodeURI(Json2csvParser.parse(this.transmutedData)))
+        link.setAttribute('download', 'overspeed.csv')
+        document.body.appendChild(link)
+        link.click()
         // console.log(Json2csvParser.parse(this.transmutedData))
       } else {
         alert('There\'s not transmuted data')
