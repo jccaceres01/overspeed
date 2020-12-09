@@ -113,6 +113,7 @@ export default {
         const Json2csvParser = new Parser()
         const uriEnconded = encodeURI(Json2csvParser.parse(this.transmutedData))
         window.open('data:text/csv;charset=UTF-8, '+ uriEnconded)
+        // console.log(Json2csvParser.parse(this.transmutedData))
       } else {
         alert('There\'s not transmuted data')
       }
